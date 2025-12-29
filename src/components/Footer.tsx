@@ -3,7 +3,7 @@ import whaleImage from '../5688d371-b786-4682-b447-ba5c4159bc99.png'
 
 export default function Footer() {
   const [copied, setCopied] = useState(false)
-  const contractAddress = 'ALpd3Hk4NWd5KSmvUQBmXyMVRadYhEb2xKaV5Dn6pump'
+  const contractAddress = '5sMmjBoKVGDmD5iiuKDqZe1ERkkeb3mJidnqi7Epump'
 
   const handleCopy = async () => {
     try {
