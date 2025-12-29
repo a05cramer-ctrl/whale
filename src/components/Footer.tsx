@@ -1,6 +1,20 @@
+import { useState } from 'react'
 import whaleImage from '../5688d371-b786-4682-b447-ba5c4159bc99.png'
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false)
+  const contractAddress = 'ALpd3Hk4NWd5KSmvUQBmXyMVRadYhEb2xKaV5Dn6pump'
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(contractAddress)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
+
   return (
     <footer className="py-12 px-4 bg-gray-900 text-white relative overflow-hidden">
       {/* Whale watermark */}
@@ -26,7 +40,14 @@ export default function Footer() {
               𝕏
             </a>
           </div>
-          <p className="text-sm text-gray-400">CA</p>
+          <button
+            onClick={handleCopy}
+            className="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer font-mono"
+            title="Click to copy contract address"
+          >
+            CA: {contractAddress}
+            {copied && <span className="ml-2 text-whale-red">✓ Copied!</span>}
+          </button>
         </div>
       </div>
     </footer>
